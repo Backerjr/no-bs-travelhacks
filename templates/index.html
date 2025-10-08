@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DXBiti - Your Smart Tour Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to DXBiti</h1>
+        <p>Your smart AI guide for Dubai tours</p>
+    </header>
+
+    <main>
+        <section id="tours">
+            <h2>Available Tours</h2>
+            <div id="tours-list"></div>
+        </section>
+
+        <section id="chatbot">
+            <h2>Ask a Question</h2>
+            <div id="chat-window">
+                <div id="chat-messages"></div>
+                <input type="text" id="chat-input" placeholder="Type your question here...">
+                <button id="send-btn">Send</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
