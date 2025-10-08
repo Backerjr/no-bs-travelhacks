@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DXBiti - Your Smart Tour Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
-        <h1>Welcome to DXBiti</h1>
-        <p>Your smart AI guide for Dubai tours</p>
+        <div class="container">
+            <h1>Welcome to DXBiti</h1>
+            <p>Your smart AI guide for Dubai tours</p>
+        </div>
     </header>
 
-    <main>
+    <main class="container">
         <section id="tours">
             <h2>Available Tours</h2>
             <div id="tours-list"></div>
@@ -22,11 +27,19 @@
             <h2>Ask a Question</h2>
             <div id="chat-window">
                 <div id="chat-messages"></div>
+            </div>
+            <div id="chat-input-area">
                 <input type="text" id="chat-input" placeholder="Type your question here...">
                 <button id="send-btn">Send</button>
             </div>
         </section>
     </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DXBiti. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
