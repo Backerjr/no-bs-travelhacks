@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
@@ -20,32 +20,17 @@
     <main class="container">
         <section id="tours">
             <h2>Available Tours</h2>
-            <div id="tours-list">
-                <div class="tour-card">
-                    <h3>Dubai City Tour</h3>
-                    <p>A tour of the most famous landmarks in Dubai.</p>
-                </div>
-                <div class="tour-card">
-                    <h3>Desert Safari</h3>
-                    <p>An adventurous trip to the desert with dune bashing and dinner.</p>
-                </div>
-                <div class="tour-card">
-                    <h3>Abu Dhabi City Tour</h3>
-                    <p>A full-day tour of the capital of the UAE.</p>
-                </div>
-            </div>
+            <div id="tours-list"></div>
         </section>
 
         <section id="chatbot">
             <h2>Ask a Question</h2>
             <div id="chat-window">
-                <div id="chat-messages">
-                  <div class="message bot">This feature is temporarily disabled.</div>
-                </div>
+                <div id="chat-messages"></div>
             </div>
             <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Chat is disabled" disabled>
-                <button id="send-btn" disabled>Send</button>
+                <input type="text" id="chat-input" placeholder="Type your question here...">
+                <button id="send-btn">Send</button>
             </div>
         </section>
     </main>
@@ -56,6 +41,6 @@
         </div>
     </footer>
 
-    <script src="static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
