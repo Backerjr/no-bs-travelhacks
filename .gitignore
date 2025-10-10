@@ -1,0 +1,5 @@
+# Flowise database
+.flowise
+
+# Environment variables
+.env
