@@ -53,7 +53,12 @@
         </div>
     </footer>
 
-    <!-- Chatbot will be added back here once it's hosted -->
-
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "YOUR-CHATFLOW-ID", // 1hwOsrp9kQjAgBo51hdhNSKGvXWjcblf-7HcYLr3VKs
+        apiHost: "https://no-bs-chatbot.onrender.com", // https://no-bs-chatbot.onrender.com
+    } )
+</script>
 </body>
 </html>
