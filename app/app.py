@@ -1,8 +1,11 @@
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
  main
 import json
@@ -11,7 +14,10 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
+ main
 from flask import Flask, jsonify, render_template, request
 
 from app.content import (
@@ -25,6 +31,8 @@ from app.content import (
     PHOTOGRAPHY_MOMENTS,
     SIGNATURE_TAGLINE,
 )
+ codex/add-data-and-images-to-project-nmy6ae
+
 
  codex/add-data-and-images-to-project-vu2r5u
 
@@ -33,6 +41,7 @@ from app.content import (
  main
 from flask import Flask, jsonify, render_template, request
  main
+ main
 
 app = Flask(__name__, static_folder='../static', template_folder='../')
 
@@ -40,11 +49,14 @@ app = Flask(__name__, static_folder='../static', template_folder='../')
 tours = [
     {
         "id": 1,
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
  main
         "name": "Sheikh Zayed Grand Mosque Dawn Access",
@@ -68,6 +80,8 @@ tours = [
         "duration": "7 hours",
         "price": 520,
         "best_time": "Oct–Apr · 17:00",
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
@@ -97,16 +111,20 @@ tours = [
  main
  main
  main
+ main
     },
 ]
 
 tour_insights = [
     {
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
  main
         "title": "Luxury For Less",
@@ -122,6 +140,8 @@ tour_insights = [
         "title": "Hydration Rule",
         "stat": "500ml/hr",
         "description": "Plan for half a litre of water per hour outdoors; our refill strategy keeps you cool without overpacking.",
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
@@ -143,6 +163,7 @@ tour_insights = [
  main
  main
  main
+ main
     },
 ]
 
@@ -159,7 +180,10 @@ CITY_COORDINATES = {
     },
 }
 
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
+ main
 FALLBACK_WEATHER = {
     "dubai": {
         "temperature": 32.0,
@@ -208,7 +232,10 @@ def fallback_weather(city_key):
         notice="Live feed paused—serving our last on-ground sensor sweep.",
     )
 
+ codex/add-data-and-images-to-project-nmy6ae
 
+
+ main
  main
 @app.route('/')
 def index():
@@ -245,11 +272,14 @@ def ask_question():
     elif "budget" in question or "cheap" in question:
         answer = (
             "Skip the taxis—use the Dubai Metro from DXB into the city and grab a Nol card. "
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
  main
             "Bundle mosque, Mandir, and desert transfers with one chauffeur to trim 18% instantly."
@@ -280,9 +310,12 @@ def ask_question():
 
 @app.route('/api/weather')
 def get_weather():
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
+ main
  main
     """Fetch a live weather snapshot for supported Gulf cities using the Open-Meteo API."""
 
@@ -295,6 +328,8 @@ def get_weather():
     params = {
         "latitude": city["latitude"],
         "longitude": city["longitude"],
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
 
@@ -303,6 +338,7 @@ def get_weather():
     params = {
         "latitude": 25.2048,
         "longitude": 55.2708,
+ main
  main
  main
         "current_weather": True,
@@ -317,11 +353,16 @@ def get_weather():
         ) as response:
             data = json.load(response)
     except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
+ main
         return jsonify(fallback_weather(city_key))
     current = data.get("current_weather", {})
     if not current:
         return jsonify(fallback_weather(city_key))
+ codex/add-data-and-images-to-project-nmy6ae
+
 
         return (
             jsonify(
@@ -333,6 +374,7 @@ def get_weather():
         )
     current = data.get("current_weather", {})
  main
+ main
     updated_iso = current.get("time")
     updated_at = None
     if updated_iso:
@@ -341,9 +383,12 @@ def get_weather():
         except ValueError:
             updated_at = updated_iso
 
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
 
  codex/add-data-and-images-to-project-vu2r5u
+ main
  main
     humidity = None
     hourly = data.get("hourly", {})
@@ -354,7 +399,10 @@ def get_weather():
         if idx < len(humidity_values):
             humidity = humidity_values[idx]
 
+ codex/add-data-and-images-to-project-nmy6ae
+
  codex/add-data-and-images-to-project-h2royc
+ main
     payload = build_weather_payload(
         city_key,
         {
@@ -371,6 +419,8 @@ def get_weather():
     )
 
     return jsonify(payload)
+ codex/add-data-and-images-to-project-nmy6ae
+
 
 
  main
@@ -412,6 +462,7 @@ def get_weather():
         )
 
     return jsonify({"answer": answer})
+ main
  main
  main
  main
