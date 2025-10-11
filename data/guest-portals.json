@@ -1,0 +1,29 @@
+[
+  {
+    "guestId": "ali-2025-08-15",
+    "name": "Ali",
+    "whatsapp": "971500000001",
+    "trip": {
+      "dates": "15–19 Aug",
+      "pax": 2,
+      "vibe": "Luxury"
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Old Dubai + Creek + Souqs",
+        "notes": "Abra ride; Dubai Frame photo"
+      },
+      {
+        "day": 2,
+        "title": "Abu Dhabi: Mosque + Louvre",
+        "notes": "Modest attire"
+      },
+      {
+        "day": 3,
+        "title": "Premium Desert Safari",
+        "notes": "Pickup 15:00–15:30"
+      }
+    ]
+  }
+]

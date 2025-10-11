@@ -1,57 +1,40 @@
-# No-BS Travel Hacks ✈️
+# Ahmed's Digital Concierge
 
-Welcome to the official repository for the "No-BS Travel Hacks" website. This project is dedicated to providing simple, effective, and no-nonsense travel advice for everyone.
+Luxury travel concierge built with Next.js App Router, Tailwind CSS, and Framer Motion. The experience highlights signature UAE itineraries, BoujeeBot AI, and reusable guest communication flows.
 
-**Live Site:** [**https://backerjr.github.io/no-bs-travelhacks/**](https://backerjr.github.io/no-bs-travelhacks/ )
+## Getting Started
 
-![No-BS Travel Hacks Screenshot](https://i.imgur.com/your-screenshot-url.png ) 
-*(**Note:** After the site is working, take a screenshot, upload it to a site like [Imgur](https://imgur.com/upload ), and replace the URL above to show off your design!)*
+```bash
+npm install
+npm run dev
+```
 
----
+Visit `http://localhost:3000` to explore the concierge.
 
-## 🎯 Project Goal
+## Available Scripts
+- `npm run dev` – start the development server with hot reload.
+- `npm run build` – generate an optimized production build.
+- `npm run start` – serve the production build.
+- `npm run lint` – run Next.js linting.
 
-The goal of this website is to cut through the noise of "genius" travel hacks that don't actually work. We focus on practical, repeatable advice that saves you money, time, and stress.
+## Environment Variables
+Set the following variables for full functionality:
 
--   **No Gimmicks:** Just strategies that are proven to work.
--   **Simple & Clean:** A straightforward website that is fast and easy to use.
--   **Community Driven:** (Future Goal) A place to share and discuss real travel hacks.
+- `OPENAI_API_KEY` – optional, used to proxy BoujeeBot to OpenAI. When omitted the API returns a curated response.
+- `NEXT_PUBLIC_WHATSAPP_BUSINESS` – WhatsApp number used for CTA links (digits only).
 
----
+Create a `.env.local` file and add the values:
 
-## 🛠️ Tech Stack
+```bash
+OPENAI_API_KEY=sk-...
+NEXT_PUBLIC_WHATSAPP_BUSINESS=9715XXXXXXX
+```
 
-This is a simple static website built with fundamental web technologies, making it fast, reliable, and easy to maintain.
+## Content Sources
+Structured JSON files under `/data` power tours, FAQs, and guest information. Update these files to refresh copy without touching components.
 
--   **HTML5:** For the core structure and content.
--   **CSS3:** For all styling, layout, and responsive design.
--   **JavaScript:** (Future) For interactive elements, including the chatbot.
--   **GitHub Pages:** For hosting the live website.
-
----
-
-## 🚀 Current Status & Roadmap
-
-This project is currently in the initial development phase.
-
-### Phase 1: Core Website (✅ Complete)
-- [x] Setup initial HTML structure.
-- [x] Create a modern, responsive CSS design.
-- [x] Deploy the static site using GitHub Pages.
-
-### Phase 2: Chatbot Integration (In Progress)
-- [ ] Deploy the Flowise chatbot backend to a public server (e.g., Render).
-- [ ] Integrate the live chatbot into the website.
-
-### Phase 3: Content & Features (Future)
-- [ ] Write and publish the first set of travel hack articles.
-- [ ] Add "About" and "Contact" pages.
-- [ ] Create a blog section with multiple posts.
-
----
-
-## 📝 Notes for Myself
-
--   **Deployment:** The site is hosted on GitHub Pages from the `main` branch and `/(root)` folder. The `.nojekyll` file is required to prevent GitHub from using the Jekyll build process.
--   **Chatbot API:** The chatbot script in `index.html` needs its `apiHost` updated with the public URL once the Flowise server is deployed.
--   **Design:** Fonts are loaded from Google Fonts (`Inter` and `Lato`). The hero image is from Unsplash.
+## Deployment Checklist
+- Configure environment variables in Vercel.
+- Upload hero and etiquette imagery to `/public/img`.
+- Review analytics integrations as needed (Vercel Analytics, Plausible).
+- Smoke test WhatsApp CTA links on mobile.

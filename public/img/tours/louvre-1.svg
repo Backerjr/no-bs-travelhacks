@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bfdbfe" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#grad)" />
+  <text x="50%" y="50%" font-family="'Playfair Display', serif" font-size="32" text-anchor="middle" fill="#e0f2fe">
+    Louvre & Mosque
+  </text>
+</svg>

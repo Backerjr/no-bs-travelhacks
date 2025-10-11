@@ -1,0 +1,12 @@
+{
+  "contacts": {
+    "whatsappBusiness": "971500000000",
+    "emergency": "+971-50-000-0000"
+  },
+  "etiquetteImages": ["/img/info/mosque-manners.svg"],
+  "pickupAreas": ["Deira", "Bur Dubai", "Marina", "Sheikh Zayed Road", "Al Barsha"],
+  "sop": {
+    "cancellation": "Email support per SOP; refunds subject to supplier policy; turnaround ~7 business days after approval.",
+    "noShow": "Drivers wait 5–10 minutes; no refund after a no-show."
+  }
+}

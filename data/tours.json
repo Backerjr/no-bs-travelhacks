@@ -1,0 +1,64 @@
+[
+  {
+    "slug": "desert-safari-premium",
+    "title": "Premium Desert Safari",
+    "duration": "6-7 hours",
+    "pickupWindow": "15:00–15:30 (sharing up to 6 pax per 4x4)",
+    "highlights": ["Dune bashing", "Tanoura + Fire show", "International buffet"],
+    "inclusions": [
+      "Hotel pick-up/drop-off",
+      "Unlimited soft drinks",
+      "Short camel ride",
+      "Henna (small design)"
+    ],
+    "notes": [
+      "Quad/buggy at site with extra cost",
+      "Pregnant guests not advised for dune bashing"
+    ],
+    "images": ["/img/tours/safari-1.svg"],
+    "cta": {"type": "whatsapp", "text": "Book via WhatsApp"},
+    "tags": ["Desert", "Luxury", "Evening"]
+  },
+  {
+    "slug": "abu-dhabi-louvre",
+    "title": "Abu Dhabi City Tour + Louvre",
+    "duration": "~11.5 hours",
+    "pickupWindow": "08:30–09:00",
+    "highlights": ["Grand Mosque", "Louvre Abu Dhabi", "Emirates Palace stop"],
+    "inclusions": ["Hotel pick-up", "Louvre ticket", "Photo stops"],
+    "notes": [
+      "Modest attire for mosque",
+      "Shared transfers from central Dubai"
+    ],
+    "images": ["/img/tours/louvre-1.svg"],
+    "cta": {"type": "ai", "text": "Ask Boujee about timings"},
+    "tags": ["City", "Culture", "Day Trip"]
+  },
+  {
+    "slug": "dhow-cruise-marina",
+    "title": "Dubai Marina Dhow Soirée",
+    "duration": "2 hours",
+    "pickupWindow": "19:15–19:45",
+    "highlights": ["Glass-enclosed dhow", "Live violinist", "Gourmet buffet"],
+    "inclusions": ["Upper deck seating", "Soft beverages", "Live entertainment"],
+    "notes": ["Smart casual dress", "Private table upgrade available"],
+    "images": ["/img/tours/dhow-1.svg"],
+    "cta": {"type": "whatsapp", "text": "Reserve your table"},
+    "tags": ["Water", "Evening", "Luxury"]
+  },
+  {
+    "slug": "balloon-odyssey",
+    "title": "Hot Air Balloon Odyssey",
+    "duration": "4 hours",
+    "pickupWindow": "03:45–04:30",
+    "highlights": ["Falcon show", "Gourmet breakfast", "Vintage Land Rover transfers"],
+    "inclusions": ["Shared balloon flight", "Pilot briefing", "Post-flight breakfast"],
+    "notes": [
+      "Bring passport/ID",
+      "Weather dependent; pilot may cancel for safety"
+    ],
+    "images": ["/img/tours/balloon-1.svg"],
+    "cta": {"type": "ai", "text": "Check sunrise slots"},
+    "tags": ["Adventure", "Dawn", "Luxury"]
+  }
+]
