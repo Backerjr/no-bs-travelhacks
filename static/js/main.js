@@ -7,7 +7,10 @@ const chatClose = document.getElementById('chat-close');
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
+ main
 const weatherCard = document.getElementById('weather-card');
 const weatherCityLabel = document.getElementById('weather-city');
 const weatherTemp = document.getElementById('weather-temp');
@@ -16,6 +19,63 @@ const weatherHumidity = document.getElementById('weather-humidity');
 const weatherLight = document.getElementById('weather-light');
 const weatherUpdated = document.getElementById('weather-updated');
 const weatherTabs = document.querySelectorAll('[data-forecast-city]');
+ codex/add-data-and-images-to-project-h2royc
+const weatherSource = document.getElementById('weather-source');
+const heroSection = document.querySelector('.hero');
+const heroImageForm = document.getElementById('hero-image-form');
+const heroImageInput = document.getElementById('hero-image-url');
+const heroImageReset = document.getElementById('hero-image-reset');
+const mapEmbedFrame = document.querySelector('.map-embed iframe');
+const mapFallbackMessage = document.getElementById('map-fallback-message');
+
+let activeWeatherCity = 'dubai';
+const weatherCache = {};
+const HERO_IMAGE_STORAGE_KEY = 'nbsth.heroImage';
+let defaultHeroImage = '';
+
+function getStoredHeroImage() {
+    try {
+        return window.localStorage.getItem(HERO_IMAGE_STORAGE_KEY);
+    } catch (error) {
+        return null;
+    }
+}
+
+function storeHeroImage(url) {
+    try {
+        if (url) {
+            window.localStorage.setItem(HERO_IMAGE_STORAGE_KEY, url);
+        } else {
+            window.localStorage.removeItem(HERO_IMAGE_STORAGE_KEY);
+        }
+    } catch (error) {
+        // Storage might be unavailable (e.g., private mode). Silently ignore.
+    }
+}
+
+function applyHeroImage(url, { persist = true } = {}) {
+    if (!heroSection || !url) {
+        return;
+    }
+
+    const safeUrl = JSON.stringify(url);
+    heroSection.style.setProperty('--hero-image', `url(${safeUrl})`);
+    heroSection.dataset.heroSource = 'custom';
+
+    if (persist) {
+        storeHeroImage(url);
+    }
+}
+
+function resetHeroImage() {
+    if (!heroSection || !defaultHeroImage) {
+        return;
+    }
+    heroSection.style.setProperty('--hero-image', defaultHeroImage);
+    heroSection.dataset.heroSource = 'default';
+    storeHeroImage(null);
+}
+
 const photoTimeline = document.getElementById('photography-guide');
 const essentialsList = document.getElementById('essentials-list');
 const mapHighlightsList = document.getElementById('map-highlights');
@@ -246,6 +306,7 @@ const mapHighlights = [
         detail: 'Sunset dune drive, astronomy session, and locally sourced dinner.'
     }
 ];
+ main
 
 const weatherCodes = {
     0: 'Clear skies',
@@ -293,6 +354,9 @@ async function fetchTours() {
         const response = await fetch('/api/tours');
         const tours = await response.json();
 
+ codex/add-data-and-images-to-project-h2royc
+
+ main
  main
         toursTableBody.innerHTML = tours
             .map(
@@ -313,6 +377,12 @@ async function fetchTours() {
         toursTableBody.innerHTML = '<tr><td colspan="4" class="error">Tour data is taking a break. Try again soon.</td></tr>';
     }
 }
+
+ codex/add-data-and-images-to-project-h2royc
+function setWeatherError(message) {
+    if (!weatherCard) return;
+    weatherCard.dataset.state = 'error';
+    weatherCard.dataset.source = 'error';
 
 function renderPhotographyGuide() {
     if (!photoTimeline) return;
@@ -371,17 +441,29 @@ function renderMapHighlights() {
 function setWeatherError(message) {
     if (!weatherCard) return;
     weatherCard.dataset.state = 'error';
+ main
     if (weatherTemp) weatherTemp.textContent = '—';
     if (weatherWind) weatherWind.textContent = '—';
     if (weatherHumidity) weatherHumidity.textContent = '—';
     if (weatherLight) weatherLight.textContent = 'Unable to reach forecast';
     if (weatherUpdated) weatherUpdated.textContent = message || 'Check your connection and try again.';
+ codex/add-data-and-images-to-project-h2royc
+    if (weatherSource) {
+        weatherSource.textContent = 'Forecast paused—please retry in a moment.';
+        weatherSource.dataset.variant = 'error';
+    }
+
+ main
 }
 
 function updateWeatherUI(cityKey, data) {
     if (!weatherCard) return;
     activeWeatherCity = cityKey;
     weatherCard.dataset.state = 'ready';
+ codex/add-data-and-images-to-project-h2royc
+    weatherCard.dataset.source = data.source || 'live';
+
+ main
 
     weatherTabs.forEach((tab) => {
         const isActive = tab.dataset.forecastCity === cityKey;
@@ -406,6 +488,13 @@ function updateWeatherUI(cityKey, data) {
             ? `Updated ${data.updated_at} GST`
             : 'Live satellite sync';
     }
+ codex/add-data-and-images-to-project-h2royc
+    if (weatherSource) {
+        weatherSource.textContent = data.notice || '';
+        weatherSource.dataset.variant = data.source || 'live';
+    }
+
+ main
 }
 
 async function fetchWeather(cityKey, { showLoader = true, suppressUpdate = false } = {}) {
@@ -440,6 +529,36 @@ async function fetchWeather(cityKey, { showLoader = true, suppressUpdate = false
         return null;
     }
 }
+ codex/add-data-and-images-to-project-h2royc
+
+function handleWeatherTabClick(event) {
+    const city = event.currentTarget.dataset.forecastCity;
+    if (!city || city === activeWeatherCity) return;
+
+    if (weatherCache[city]) {
+        updateWeatherUI(city, weatherCache[city]);
+    } else {
+        fetchWeather(city);
+    }
+}
+
+function appendMessage(content, sender = 'bot') {
+    const message = document.createElement('div');
+    message.classList.add('chat-message', sender);
+    message.textContent = content;
+    chatMessages.appendChild(message);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+async function handleChatSubmit(event) {
+    event.preventDefault();
+    const question = chatInput.value.trim();
+    if (!question) return;
+
+    appendMessage(question, 'user');
+    chatInput.value = '';
+
+
 
 function handleWeatherTabClick(event) {
     const city = event.currentTarget.dataset.forecastCity;
@@ -572,6 +691,7 @@ async function handleChatSubmit(event) {
 
  main
  main
+ main
     try {
         const response = await fetch('/api/ask', {
             method: 'POST',
@@ -584,6 +704,7 @@ async function handleChatSubmit(event) {
         appendMessage('The connection dropped—give it another go in a few seconds.', 'bot');
     }
 }
+ codex/add-data-and-images-to-project-h2royc
 
 function openChat() {
     chatWindow.classList.remove('hidden');
@@ -591,6 +712,15 @@ function openChat() {
     chatInput.focus();
 }
 
+
+
+function openChat() {
+    chatWindow.classList.remove('hidden');
+    chatWidget.classList.add('open');
+    chatInput.focus();
+}
+
+ main
 function closeChat() {
     chatWindow.classList.add('hidden');
     chatWidget.classList.remove('open');
@@ -614,6 +744,62 @@ if (chatForm) {
     chatForm.addEventListener('submit', handleChatSubmit);
 }
 
+ codex/add-data-and-images-to-project-h2royc
+fetchInsights();
+fetchTours();
+
+if (heroSection) {
+    heroSection.dataset.heroSource = 'default';
+    defaultHeroImage = getComputedStyle(heroSection).getPropertyValue('--hero-image').trim();
+    const storedHero = getStoredHeroImage();
+    if (storedHero) {
+        applyHeroImage(storedHero, { persist: false });
+        if (heroImageInput) {
+            heroImageInput.value = storedHero;
+        }
+    }
+}
+
+if (heroImageForm) {
+    heroImageForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const newUrl = heroImageInput ? heroImageInput.value.trim() : '';
+        if (!newUrl) return;
+        applyHeroImage(newUrl);
+    });
+}
+
+if (heroImageReset) {
+    heroImageReset.addEventListener('click', (event) => {
+        event.preventDefault();
+        resetHeroImage();
+        if (heroImageInput) {
+            heroImageInput.value = '';
+        }
+    });
+}
+
+if (mapEmbedFrame && mapFallbackMessage) {
+    let mapLoaded = false;
+    const showFallback = () => {
+        if (!mapLoaded) {
+            mapFallbackMessage.hidden = false;
+            mapFallbackMessage.classList.add('visible');
+        }
+    };
+
+    mapEmbedFrame.addEventListener('load', () => {
+        mapLoaded = true;
+        mapFallbackMessage.hidden = true;
+        mapFallbackMessage.classList.remove('visible');
+    });
+
+    mapEmbedFrame.addEventListener('error', showFallback);
+
+    window.setTimeout(showFallback, 4500);
+}
+
+
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
@@ -625,6 +811,7 @@ fetchInsights();
 fetchTours();
 
  codex/add-data-and-images-to-project-vu2r5u
+ main
 if (weatherCard) {
     weatherTabs.forEach((tab) => {
         tab.addEventListener('click', handleWeatherTabClick);
@@ -643,6 +830,8 @@ if (weatherCard) {
         fetchWeather(activeWeatherCity, { showLoader: false });
     }, 15 * 60 * 1000);
 }
+ codex/add-data-and-images-to-project-h2royc
+
 
 if (weatherTemp) {
     fetchWeather();
@@ -651,5 +840,6 @@ if (weatherTemp) {
 
 fetchInsights();
 fetchTours();
+ main
  main
  main

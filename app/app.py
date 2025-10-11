@@ -1,6 +1,9 @@
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
 import json
 from datetime import datetime
@@ -8,12 +11,28 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+ codex/add-data-and-images-to-project-h2royc
+from flask import Flask, jsonify, render_template, request
+
+from app.content import (
+    ESSENTIALS_KIT,
+    EXPERIENCE_HIGHLIGHTS,
+    GALLERY_IMAGES,
+    HERO_CONTENT,
+    JOURNAL_FEATURES,
+    KNOW_BEFORE_ENTRIES,
+    MAP_CONTENT,
+    PHOTOGRAPHY_MOMENTS,
+    SIGNATURE_TAGLINE,
+)
+
  codex/add-data-and-images-to-project-vu2r5u
 
 
  main
  main
 from flask import Flask, jsonify, render_template, request
+ main
 
 app = Flask(__name__, static_folder='../static', template_folder='../')
 
@@ -21,9 +40,12 @@ app = Flask(__name__, static_folder='../static', template_folder='../')
 tours = [
     {
         "id": 1,
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
         "name": "Sheikh Zayed Grand Mosque Dawn Access",
         "description": "Private imam-led tour with Swarovski chandelier briefing and photography concierge.",
@@ -46,6 +68,8 @@ tours = [
         "duration": "7 hours",
         "price": 520,
         "best_time": "Oct–Apr · 17:00",
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
 
 
@@ -72,14 +96,18 @@ tours = [
         "best_time": "November - March",
  main
  main
+ main
     },
 ]
 
 tour_insights = [
     {
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
         "title": "Luxury For Less",
         "stat": "18%",
@@ -94,6 +122,8 @@ tour_insights = [
         "title": "Hydration Rule",
         "stat": "500ml/hr",
         "description": "Plan for half a litre of water per hour outdoors; our refill strategy keeps you cool without overpacking.",
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
 
 
@@ -112,6 +142,7 @@ tour_insights = [
         "description": "Booking flights five weeks out consistently beats last-minute fares for Gulf routes.",
  main
  main
+ main
     },
 ]
 
@@ -128,9 +159,71 @@ CITY_COORDINATES = {
     },
 }
 
+ codex/add-data-and-images-to-project-h2royc
+FALLBACK_WEATHER = {
+    "dubai": {
+        "temperature": 32.0,
+        "windspeed": 14.0,
+        "winddirection": 325,
+        "weathercode": 2,
+        "is_day": 1,
+        "humidity": 48,
+    },
+    "abu-dhabi": {
+        "temperature": 31.0,
+        "windspeed": 18.0,
+        "winddirection": 300,
+        "weathercode": 1,
+        "is_day": 1,
+        "humidity": 52,
+    },
+}
+
+
+def build_weather_payload(city_key, data, *, updated_at, source, notice):
+    city = CITY_COORDINATES[city_key]
+    return {
+        "temperature": data.get("temperature"),
+        "windspeed": data.get("windspeed"),
+        "winddirection": data.get("winddirection"),
+        "weathercode": data.get("weathercode"),
+        "is_day": data.get("is_day"),
+        "humidity": data.get("humidity"),
+        "updated_at": updated_at,
+        "city": city["label"],
+        "city_key": city_key,
+        "source": source,
+        "notice": notice,
+    }
+
+
+def fallback_weather(city_key):
+    now = datetime.now().strftime("%d %b %Y %H:%M")
+    base = FALLBACK_WEATHER.get(city_key, FALLBACK_WEATHER["dubai"]).copy()
+    return build_weather_payload(
+        city_key,
+        base,
+        updated_at=now,
+        source="curated",
+        notice="Live feed paused—serving our last on-ground sensor sweep.",
+    )
+
+
+ main
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template(
+        'index.html',
+        signature_tagline=SIGNATURE_TAGLINE,
+        hero=HERO_CONTENT,
+        experience_highlights=EXPERIENCE_HIGHLIGHTS,
+        know_before=KNOW_BEFORE_ENTRIES,
+        photography_moments=PHOTOGRAPHY_MOMENTS,
+        essentials=ESSENTIALS_KIT,
+        gallery_images=GALLERY_IMAGES,
+        map_content=MAP_CONTENT,
+        journal_features=JOURNAL_FEATURES,
+    )
 
 @app.route('/api/tours')
 def get_tours():
@@ -152,9 +245,12 @@ def ask_question():
     elif "budget" in question or "cheap" in question:
         answer = (
             "Skip the taxis—use the Dubai Metro from DXB into the city and grab a Nol card. "
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
 
  codex/add-data-and-images-to-project-kepdua
+ main
  main
             "Bundle mosque, Mandir, and desert transfers with one chauffeur to trim 18% instantly."
         )
@@ -184,7 +280,10 @@ def ask_question():
 
 @app.route('/api/weather')
 def get_weather():
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
+ main
     """Fetch a live weather snapshot for supported Gulf cities using the Open-Meteo API."""
 
     city_key = (request.args.get('city') or 'dubai').lower()
@@ -196,12 +295,15 @@ def get_weather():
     params = {
         "latitude": city["latitude"],
         "longitude": city["longitude"],
+ codex/add-data-and-images-to-project-h2royc
+
 
     """Fetch a live weather snapshot for Dubai using the Open-Meteo API."""
 
     params = {
         "latitude": 25.2048,
         "longitude": 55.2708,
+ main
  main
         "current_weather": True,
         "hourly": ["temperature_2m", "relativehumidity_2m", "windspeed_10m"],
@@ -215,6 +317,12 @@ def get_weather():
         ) as response:
             data = json.load(response)
     except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+ codex/add-data-and-images-to-project-h2royc
+        return jsonify(fallback_weather(city_key))
+    current = data.get("current_weather", {})
+    if not current:
+        return jsonify(fallback_weather(city_key))
+
         return (
             jsonify(
                 {
@@ -224,6 +332,7 @@ def get_weather():
             503,
         )
     current = data.get("current_weather", {})
+ main
     updated_iso = current.get("time")
     updated_at = None
     if updated_iso:
@@ -232,7 +341,10 @@ def get_weather():
         except ValueError:
             updated_at = updated_iso
 
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
+ main
     humidity = None
     hourly = data.get("hourly", {})
     hourly_times = hourly.get("time", [])
@@ -241,6 +353,24 @@ def get_weather():
         idx = hourly_times.index(updated_iso)
         if idx < len(humidity_values):
             humidity = humidity_values[idx]
+
+ codex/add-data-and-images-to-project-h2royc
+    payload = build_weather_payload(
+        city_key,
+        {
+            "temperature": current.get("temperature"),
+            "windspeed": current.get("windspeed"),
+            "winddirection": current.get("winddirection"),
+            "weathercode": current.get("weathercode"),
+            "is_day": current.get("is_day"),
+            "humidity": humidity,
+        },
+        updated_at=updated_at,
+        source="live",
+        notice="Live feed courtesy of Open-Meteo (refreshed every 15 minutes).",
+    )
+
+    return jsonify(payload)
 
 
  main
@@ -282,6 +412,7 @@ def get_weather():
         )
 
     return jsonify({"answer": answer})
+ main
  main
  main
 

@@ -12,7 +12,11 @@
 <body>
     <div class="signature-banner">
         <div class="container">
+ codex/add-data-and-images-to-project-h2royc
+            <span>{{ signature_tagline }}</span>
+
             <span>Luxury Travel | Storytelling | AI-Optimized Experiences™</span>
+ main
         </div>
     </div>
 
@@ -20,17 +24,46 @@
         <div class="container nav-inner">
             <a href="#" class="logo">No-BS Travel Hacks</a>
             <ul class="nav-links">
+ codex/add-data-and-images-to-project-h2royc
+                <li><a href="#intel">Intel</a></li>
+                <li><a href="#know-before">Know Before</a></li>
+
  codex/add-data-and-images-to-project-vu2r5u
                 <li><a href="#intel">Intel</a></li>
                 <li><a href="#know-before">Know Before</a></li>
 
                 <li><a href="#know-before">Know Before You Go</a></li>
  main
+ main
                 <li><a href="#map">Map &amp; Logistics</a></li>
                 <li><a href="#journal">Travel Journal</a></li>
             </ul>
         </div>
     </nav>
+
+ codex/add-data-and-images-to-project-h2royc
+    <header class="hero" style="--hero-image: url('{{ hero.image_url | e }}');">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-intro">
+                    <p class="eyebrow">{{ hero.eyebrow }}</p>
+                    <h1 class="hero-title">{{ hero.title }}</h1>
+                    <p class="hero-subtitle">{{ hero.subtitle }}</p>
+                    <ul class="hero-highlights">
+                        {% for highlight in hero.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="ahmed-tip hero-tip">{{ hero.tip }}</div>
+                    <form class="hero-image-form" id="hero-image-form">
+                        <label for="hero-image-url">Swap the header photo with your own URL</label>
+                        <div class="hero-image-input">
+                            <input type="url" id="hero-image-url" name="hero_image_url" placeholder="Paste a high-res image link (1600px recommended)">
+                            <button type="submit">Apply</button>
+                            <button type="button" class="link-button" id="hero-image-reset">Reset</button>
+                        </div>
+                        <p class="hero-image-hint">Ahmed’s Tip: Choose dawn light or your own portfolio to make the brief unmistakably yours.</p>
+                    </form>
 
  codex/add-data-and-images-to-project-vu2r5u
     <header class="hero" style="--hero-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80');">
@@ -46,6 +79,7 @@
                         <li>Interactive maps and live intel for on-the-go decisions.</li>
                     </ul>
                     <div class="ahmed-tip hero-tip">Ahmed’s Tip: Book dawn transfers—traffic sleeps, and the first call to prayer becomes your soundtrack to the city.</div>
+ main
                 </div>
                 <aside class="hero-forecast" id="weather-card" aria-live="polite" data-state="idle">
                     <div class="forecast-header">
@@ -74,7 +108,11 @@
                         </dl>
                     </div>
                     <p class="weather-updated" id="weather-updated">Checking satellite data…</p>
+ codex/add-data-and-images-to-project-h2royc
+                    <p class="weather-footnote">Pack breathable layers plus a silk scarf—mosques adore modest glamour while lounges freeze the AC. <span class="weather-source" id="weather-source"></span></p>
+
                     <p class="weather-footnote">Pack breathable layers plus a silk scarf—mosques adore modest glamour while lounges freeze the AC.</p>
+ main
                 </aside>
             </div>
         </div>
@@ -88,6 +126,17 @@
                     <p class="section-lead">Curated experiences engineered for the most luminous photographs and seamless handoffs.</p>
                 </div>
                 <div class="hacks-grid">
+ codex/add-data-and-images-to-project-h2royc
+                    {% for experience in experience_highlights %}
+                    <article class="hack-card">
+                        <h3>{{ experience.title }}</h3>
+                        <p>{{ experience.detail }}</p>
+                        {% if experience.ahmed_tip %}
+                        <div class="ahmed-tip">{{ experience.ahmed_tip }}</div>
+                        {% endif %}
+                    </article>
+                    {% endfor %}
+
                     <article class="hack-card">
                         <h3>✨ Dawn at the Sheikh Zayed Grand Mosque</h3>
                         <p>Glide across the world’s largest hand-knotted carpet as Swarovski constellations shimmer overhead.</p>
@@ -130,9 +179,35 @@
                             <!-- Filled by script -->
                         </tbody>
                     </table>
+ main
                 </div>
             </div>
         </section>
+
+ codex/add-data-and-images-to-project-h2royc
+        <section class="section data-section" id="intel">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Intelligence Briefing</h2>
+                    <p class="section-lead">We track what actually moves the needle on the ground in Dubai. Here are the quick stats we review before every guest arrival.</p>
+                </div>
+                <div class="insights-grid" id="insights-grid"></div>
+
+                <div class="table-wrapper">
+                    <h3>Signature Experiences</h3>
+                    <table class="data-table" id="tours-table">
+                        <thead>
+                            <tr>
+                                <th>Tour</th>
+                                <th>Duration</th>
+                                <th>Best Time</th>
+                                <th>Approx. Price (AED)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filled by script -->
+                        </tbody>
+                    </table>
 
         <section class="section know-before" id="know-before" aria-labelledby="know-before-title">
             <div class="container">
@@ -168,17 +243,58 @@
                         </ul>
                         <div class="ahmed-tip">Ahmed’s Tip: Request the conservationist briefing; it unlocks sunrise access to the protected dunes.</div>
                     </article>
+ main
                 </div>
             </div>
         </section>
 
+ codex/add-data-and-images-to-project-h2royc
+        <section class="section know-before" id="know-before" aria-labelledby="know-before-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="know-before-title" class="section-title">Know Before You Go</h2>
+                    <p class="section-lead">Respectful highlights and tactile details so every sacred space feels intuitive.</p>
+                </div>
+                <div class="know-grid">
+                    {% for item in know_before %}
+                    <article class="know-card">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <ul>
+                            {% for reminder in item.reminders %}
+                            <li>{{ reminder }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="ahmed-tip">{{ item.ahmed_tip }}</div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+ main
         <section class="section photo-guide" aria-labelledby="photo-guide-title">
             <div class="container">
                 <div class="section-heading">
                     <h2 id="photo-guide-title" class="section-title">Photography Playbook</h2>
                     <p class="section-lead">Respectful, stunning shots engineered for your lens and your conscience.</p>
                 </div>
+ codex/add-data-and-images-to-project-h2royc
+                <ol class="photo-timeline">
+                    {% for moment in photography_moments %}
+                    <li class="photo-step">
+                        <time>{{ moment.time }}</time>
+                        <h3>{{ moment.title }}</h3>
+                        <p>{{ moment.description }}</p>
+                        <p><strong>Etiquette:</strong> {{ moment.etiquette }}</p>
+                        <div class="ahmed-tip mini">{{ moment.tip }}</div>
+                    </li>
+                    {% endfor %}
+                </ol>
+
                 <ol class="photo-timeline" id="photography-guide"></ol>
+ main
             </div>
         </section>
 
@@ -188,7 +304,80 @@
                     <h2 id="essentials-title" class="section-title">Essentials Kit</h2>
                     <p class="section-lead">Pack like a pro. Everything fits in a sleek day tote.</p>
                 </div>
+ codex/add-data-and-images-to-project-h2royc
+                <ul class="essentials-list">
+                    {% for item in essentials %}
+                    <li class="essential-item">
+                        <span aria-hidden="true">{{ item.icon }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.detail }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section gallery">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">See The Adventure</h2>
+                    <p class="section-lead">A peek at the exact moments these hacks unlock.</p>
+                </div>
+                <div class="gallery-grid">
+                    {% for image in gallery_images %}
+                    <figure>
+                        <img src="{{ image.url }}" alt="{{ image.alt }}">
+                        <figcaption>{{ image.caption }}</figcaption>
+                    </figure>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section map-journal" id="map">
+            <div class="container map-layout">
+                <div class="map-card">
+                    <h2 class="section-title">Route Crafted For Comfort</h2>
+                    <p>{{ map_content.description }}</p>
+                    <div class="map-embed" role="presentation">
+                        <iframe title="Dubai &amp; Abu Dhabi curated map" src="{{ map_content.embed_url }}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="map-fallback" id="map-fallback-message" hidden aria-live="polite" role="status">
+                            <p>We couldn't load the live Google Map right now.</p>
+                            <p class="map-fallback-note">Use the curated stops below and the offline-friendly directions to keep the route flowing.</p>
+                        </div>
+                    </div>
+                    <ul class="map-highlights" id="map-highlights">
+                        {% for highlight in map_content.highlights %}
+                        <li>
+                            <span aria-hidden="true">•</span>
+                            <div>
+                                <strong>{{ highlight.title }}</strong>
+                                <p>{{ highlight.detail }}</p>
+                                {% if highlight.ahmed_tip %}
+                                <p class="map-highlight-tip">{{ highlight.ahmed_tip }}</p>
+                                {% endif %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="map-actions">
+                        <a class="button" href="{{ map_content.directions_url }}" target="_blank" rel="noopener">Open in Google Maps &amp; Download Offline</a>
+                        <p class="map-note">{{ map_content.note }}</p>
+                    </div>
+                </div>
+                <div class="journal-card" id="journal">
+                    <h2 class="section-title">Digital Travel Journal</h2>
+                    <p>Create a keepsake worthy of framing. Add your images, annotate favourite aromas, and export to print or tablet.</p>
+                    <ul class="journal-features">
+                        {% for feature in journal_features %}
+                        <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a class="button secondary" href="journal.html" target="_blank" rel="noopener">Launch the Journal Template</a>
+                </div>
+
                 <ul class="essentials-list" id="essentials-list"></ul>
+ main
             </div>
         </section>
 
@@ -239,7 +428,7 @@
                     </ul>
                     <a class="button secondary" href="journal.html" target="_blank" rel="noopener">Launch the Journal Template</a>
                 </div>
-=======
+
     <header class="hero">
         <div class="container hero-content">
             <div class="hero-copy">
@@ -463,7 +652,10 @@
         </div>
     </footer>
 
+ codex/add-data-and-images-to-project-h2royc
+
  codex/add-data-and-images-to-project-vu2r5u
+ main
     <div class="chat-widget" id="chat-widget">
         <button class="chat-toggle" id="chat-toggle">Chat with our AI</button>
         <div class="chat-window hidden" id="chat-window">
@@ -483,6 +675,8 @@
     </div>
 
     <script src="static/js/main.js" type="module"></script>
+ codex/add-data-and-images-to-project-h2royc
+
 
 <div class="chat-widget" id="chat-widget">
     <button class="chat-toggle" id="chat-toggle">Chat with our AI</button>
@@ -503,6 +697,7 @@
 </div>
 
 <script src="static/js/main.js" type="module"></script>
+ main
  main
 </body>
 </html>
