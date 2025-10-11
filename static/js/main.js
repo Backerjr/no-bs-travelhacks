@@ -280,8 +280,8 @@ function buildFallbackWeather(cityKey) {
     }
     window.__nbsthAppInitialized = true;
 
-    const isStaticMode = window.location.protocol === 'file:' || window.location.origin === 'null';
-    const skipApiCalls = Boolean(isStaticMode);
+    let isStaticMode = window.location.protocol === 'file:' || window.location.origin === 'null';
+    let skipApiCalls = Boolean(isStaticMode);
     const state = (window.__nbsthState = window.__nbsthState || {
         activeWeatherCity: 'dubai',
         weatherCache: {},
@@ -327,6 +327,7 @@ function buildFallbackWeather(cityKey) {
     const mapHighlightsList = document.getElementById('map-highlights');
     const mapNote = document.querySelector('.map-note');
     const journalFeaturesList = document.querySelector('.journal-features');
+    const journalCtaLink = document.querySelector('.journal-card a.button');
 
     const FALLBACKS = {
         heroImage: FALLBACK_CONTENT.hero.imageUrl,
@@ -350,6 +351,32 @@ function buildFallbackWeather(cityKey) {
             return false;
         }
         return true;
+    }
+
+    if (!isStaticMode) {
+        const placeholderAnchors = [
+            signatureTagline,
+            heroEyebrow,
+            heroTitle,
+            heroSubtitle,
+            heroHighlightsList,
+            experiencesGrid,
+            knowGrid,
+            photoTimeline,
+            essentialsList,
+            galleryGrid,
+            mapDescription,
+            mapHighlightsList,
+            mapNote,
+            journalFeaturesList,
+            journalCtaLink,
+        ];
+
+        const hasServerPlaceholders = placeholderAnchors.some((element) => hasPlaceholderContent(element));
+        if (hasServerPlaceholders) {
+            isStaticMode = true;
+            skipApiCalls = true;
+        }
     }
 
     function populateFallbackContent() {
@@ -557,6 +584,15 @@ function buildFallbackWeather(cityKey) {
                 li.textContent = feature;
                 journalFeaturesList.appendChild(li);
             });
+        }
+
+        if (journalCtaLink) {
+            const currentHref = (journalCtaLink.getAttribute('href') || '').trim();
+            if (!currentHref || PLACEHOLDER_PATTERN.test(currentHref)) {
+                journalCtaLink.setAttribute('href', 'journal.html');
+                journalCtaLink.removeAttribute('target');
+                journalCtaLink.removeAttribute('rel');
+            }
         }
     }
 
