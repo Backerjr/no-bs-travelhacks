@@ -1,11 +1,17 @@
+ codex/add-data-and-images-to-project-vu2r5u
+
  codex/add-data-and-images-to-project-kepdua
+ main
 import json
 from datetime import datetime
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+ codex/add-data-and-images-to-project-vu2r5u
 
+
+ main
  main
 from flask import Flask, jsonify, render_template, request
 
@@ -15,7 +21,10 @@ app = Flask(__name__, static_folder='../static', template_folder='../')
 tours = [
     {
         "id": 1,
+ codex/add-data-and-images-to-project-vu2r5u
+
  codex/add-data-and-images-to-project-kepdua
+ main
         "name": "Sheikh Zayed Grand Mosque Dawn Access",
         "description": "Private imam-led tour with Swarovski chandelier briefing and photography concierge.",
         "duration": "3 hours",
@@ -37,6 +46,8 @@ tours = [
         "duration": "7 hours",
         "price": 520,
         "best_time": "Oct–Apr · 17:00",
+ codex/add-data-and-images-to-project-vu2r5u
+
 
         "name": "Dubai City Tour",
         "description": "A half-day sprint through Old Dubai, souks and the Burj Khalifa.",
@@ -60,12 +71,16 @@ tours = [
         "price": 180,
         "best_time": "November - March",
  main
+ main
     },
 ]
 
 tour_insights = [
     {
+ codex/add-data-and-images-to-project-vu2r5u
+
  codex/add-data-and-images-to-project-kepdua
+ main
         "title": "Luxury For Less",
         "stat": "18%",
         "description": "Couples who prebook signature mosque and desert tours together typically save 18% on chauffeured transfers.",
@@ -79,6 +94,8 @@ tour_insights = [
         "title": "Hydration Rule",
         "stat": "500ml/hr",
         "description": "Plan for half a litre of water per hour outdoors; our refill strategy keeps you cool without overpacking.",
+ codex/add-data-and-images-to-project-vu2r5u
+
 
         "title": "Average Savings",
         "stat": "22%",
@@ -94,8 +111,22 @@ tour_insights = [
         "stat": "37 days",
         "description": "Booking flights five weeks out consistently beats last-minute fares for Gulf routes.",
  main
+ main
     },
 ]
+
+CITY_COORDINATES = {
+    "dubai": {
+        "latitude": 25.2048,
+        "longitude": 55.2708,
+        "label": "Dubai",
+    },
+    "abu-dhabi": {
+        "latitude": 24.4539,
+        "longitude": 54.3773,
+        "label": "Abu Dhabi",
+    },
+}
 
 @app.route('/')
 def index():
@@ -121,7 +152,10 @@ def ask_question():
     elif "budget" in question or "cheap" in question:
         answer = (
             "Skip the taxis—use the Dubai Metro from DXB into the city and grab a Nol card. "
+ codex/add-data-and-images-to-project-vu2r5u
+
  codex/add-data-and-images-to-project-kepdua
+ main
             "Bundle mosque, Mandir, and desert transfers with one chauffeur to trim 18% instantly."
         )
     elif "desert" in question:
@@ -150,11 +184,25 @@ def ask_question():
 
 @app.route('/api/weather')
 def get_weather():
+ codex/add-data-and-images-to-project-vu2r5u
+    """Fetch a live weather snapshot for supported Gulf cities using the Open-Meteo API."""
+
+    city_key = (request.args.get('city') or 'dubai').lower()
+    city = CITY_COORDINATES.get(city_key)
+
+    if not city:
+        return jsonify({"error": "Unsupported city. Try Dubai or Abu Dhabi."}), 400
+
+    params = {
+        "latitude": city["latitude"],
+        "longitude": city["longitude"],
+
     """Fetch a live weather snapshot for Dubai using the Open-Meteo API."""
 
     params = {
         "latitude": 25.2048,
         "longitude": 55.2708,
+ main
         "current_weather": True,
         "hourly": ["temperature_2m", "relativehumidity_2m", "windspeed_10m"],
         "timezone": "Asia/Dubai",
@@ -184,6 +232,18 @@ def get_weather():
         except ValueError:
             updated_at = updated_iso
 
+ codex/add-data-and-images-to-project-vu2r5u
+    humidity = None
+    hourly = data.get("hourly", {})
+    hourly_times = hourly.get("time", [])
+    humidity_values = hourly.get("relativehumidity_2m", [])
+    if updated_iso and updated_iso in hourly_times:
+        idx = hourly_times.index(updated_iso)
+        if idx < len(humidity_values):
+            humidity = humidity_values[idx]
+
+
+ main
     payload = {
         "temperature": current.get("temperature"),
         "windspeed": current.get("windspeed"),
@@ -191,6 +251,14 @@ def get_weather():
         "weathercode": current.get("weathercode"),
         "is_day": current.get("is_day"),
         "updated_at": updated_at,
+ codex/add-data-and-images-to-project-vu2r5u
+        "humidity": humidity,
+        "city": city["label"],
+        "city_key": city_key,
+    }
+
+    return jsonify(payload)
+
     }
 
     return jsonify(payload)
@@ -214,6 +282,7 @@ def get_weather():
         )
 
     return jsonify({"answer": answer})
+ main
  main
 
 if __name__ == '__main__':
