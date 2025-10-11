@@ -12,7 +12,15 @@
 <body>
     <div class="signature-banner">
         <div class="container">
+ codex/add-data-and-images-to-project-nmy6ae
             <span>{{ signature_tagline }}</span>
+
+ codex/add-data-and-images-to-project-h2royc
+            <span>{{ signature_tagline }}</span>
+
+            <span>Luxury Travel | Storytelling | AI-Optimized Experiences™</span>
+ main
+ main
         </div>
     </div>
 
@@ -20,14 +28,29 @@
         <div class="container nav-inner">
             <a href="#" class="logo">No-BS Travel Hacks</a>
             <ul class="nav-links">
+ codex/add-data-and-images-to-project-nmy6ae
                 <li><a href="#intel">Intel</a></li>
                 <li><a href="#know-before">Know Before</a></li>
+
+ codex/add-data-and-images-to-project-h2royc
+                <li><a href="#intel">Intel</a></li>
+                <li><a href="#know-before">Know Before</a></li>
+
+ codex/add-data-and-images-to-project-vu2r5u
+                <li><a href="#intel">Intel</a></li>
+                <li><a href="#know-before">Know Before</a></li>
+
+                <li><a href="#know-before">Know Before You Go</a></li>
+ main
+ main
+ main
                 <li><a href="#map">Map &amp; Logistics</a></li>
                 <li><a href="#journal">Travel Journal</a></li>
             </ul>
         </div>
     </nav>
 
+ codex/add-data-and-images-to-project-nmy6ae
     <header class="hero" data-default-hero="{{ hero.image_url }}" style="--hero-image: url({{ hero.image_url | tojson }});">
         <div class="container">
             <div class="hero-inner">
@@ -50,6 +73,47 @@
                         </div>
                         <p class="hero-image-hint">Ahmed’s Tip: Choose dawn light or your own portfolio to make the brief unmistakably yours.</p>
                     </form>
+
+ codex/add-data-and-images-to-project-h2royc
+    <header class="hero" style="--hero-image: url('{{ hero.image_url | e }}');">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-intro">
+                    <p class="eyebrow">{{ hero.eyebrow }}</p>
+                    <h1 class="hero-title">{{ hero.title }}</h1>
+                    <p class="hero-subtitle">{{ hero.subtitle }}</p>
+                    <ul class="hero-highlights">
+                        {% for highlight in hero.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="ahmed-tip hero-tip">{{ hero.tip }}</div>
+                    <form class="hero-image-form" id="hero-image-form">
+                        <label for="hero-image-url">Swap the header photo with your own URL</label>
+                        <div class="hero-image-input">
+                            <input type="url" id="hero-image-url" name="hero_image_url" placeholder="Paste a high-res image link (1600px recommended)">
+                            <button type="submit">Apply</button>
+                            <button type="button" class="link-button" id="hero-image-reset">Reset</button>
+                        </div>
+                        <p class="hero-image-hint">Ahmed’s Tip: Choose dawn light or your own portfolio to make the brief unmistakably yours.</p>
+                    </form>
+
+ codex/add-data-and-images-to-project-vu2r5u
+    <header class="hero" style="--hero-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80');">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-intro">
+                    <p class="eyebrow">Arabian Peninsula Edition</p>
+                    <h1 class="hero-title">Dubai &amp; Abu Dhabi, orchestrated like a private members-only travel brief.</h1>
+                    <p class="hero-subtitle">Poetic city moments, precise logistics, and insider rituals curated for guests who expect a seamless glow from dawn call to prayer to starlit dunes.</p>
+                    <ul class="hero-highlights">
+                        <li>Photography cues and cultural etiquette for every sacred space.</li>
+                        <li>Comfort-first checklists so the heat never outpaces your style.</li>
+                        <li>Interactive maps and live intel for on-the-go decisions.</li>
+                    </ul>
+                    <div class="ahmed-tip hero-tip">Ahmed’s Tip: Book dawn transfers—traffic sleeps, and the first call to prayer becomes your soundtrack to the city.</div>
+ main
+ main
                 </div>
                 <aside class="hero-forecast" id="weather-card" aria-live="polite" data-state="idle">
                     <div class="forecast-header">
@@ -78,7 +142,15 @@
                         </dl>
                     </div>
                     <p class="weather-updated" id="weather-updated">Checking satellite data…</p>
+ codex/add-data-and-images-to-project-nmy6ae
                     <p class="weather-footnote">Pack breathable layers plus a silk scarf—mosques adore modest glamour while lounges freeze the AC. <span class="weather-source" id="weather-source"></span></p>
+
+ codex/add-data-and-images-to-project-h2royc
+                    <p class="weather-footnote">Pack breathable layers plus a silk scarf—mosques adore modest glamour while lounges freeze the AC. <span class="weather-source" id="weather-source"></span></p>
+
+                    <p class="weather-footnote">Pack breathable layers plus a silk scarf—mosques adore modest glamour while lounges freeze the AC.</p>
+ main
+ main
                 </aside>
             </div>
         </div>
@@ -92,6 +164,10 @@
                     <p class="section-lead">Curated experiences engineered for the most luminous photographs and seamless handoffs.</p>
                 </div>
                 <div class="hacks-grid">
+ codex/add-data-and-images-to-project-nmy6ae
+
+ codex/add-data-and-images-to-project-h2royc
+ main
                     {% for experience in experience_highlights %}
                     <article class="hack-card">
                         <h3>{{ experience.title }}</h3>
@@ -101,6 +177,7 @@
                         {% endif %}
                     </article>
                     {% endfor %}
+ codex/add-data-and-images-to-project-nmy6ae
                 </div>
             </div>
         </section>
@@ -128,10 +205,207 @@
                             <!-- Filled by script -->
                         </tbody>
                     </table>
+
+
+                    <article class="hack-card">
+                        <h3>✨ Dawn at the Sheikh Zayed Grand Mosque</h3>
+                        <p>Glide across the world’s largest hand-knotted carpet as Swarovski constellations shimmer overhead.</p>
+                        <div class="ahmed-tip">Ahmed’s Tip: Slip in 45 minutes before opening to watch sunlight braid through the chandeliers.</div>
+                    </article>
+                    <article class="hack-card">
+                        <h3>🌊 Golden Hour at Al Seef Creek</h3>
+                        <p>Breathe in oud-scented breezes while wooden abras crisscross the creek and the spice souk awakens.</p>
+                        <div class="ahmed-tip">Ahmed’s Tip: Order cardamom coffee at XVA Café—the courtyard is the quiet lens you need.</div>
+                    </article>
+                    <article class="hack-card">
+                        <h3>🔥 Dunes &amp; Sky at Al Marmoom</h3>
+                        <p>Silk-soft sand, private majlis seating, and chefs plating desert truffle risotto under the Milky Way.</p>
+                        <div class="ahmed-tip">Ahmed’s Tip: Request the star-charting guide—he maps constellations onto your photos.</div>
+                    </article>
                 </div>
             </div>
         </section>
 
+        <section class="section data-section" id="intel">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Intelligence Briefing</h2>
+                    <p class="section-lead">We track what actually moves the needle on the ground in Dubai. Here are the quick stats we review before every guest arrival.</p>
+                </div>
+                <div class="insights-grid" id="insights-grid"></div>
+
+                <div class="table-wrapper">
+                    <h3>Signature Experiences</h3>
+                    <table class="data-table" id="tours-table">
+                        <thead>
+                            <tr>
+                                <th>Tour</th>
+                                <th>Duration</th>
+                                <th>Best Time</th>
+                                <th>Approx. Price (AED)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filled by script -->
+                        </tbody>
+                    </table>
+ main
+                </div>
+            </div>
+        </section>
+
+ codex/add-data-and-images-to-project-h2royc
+        <section class="section data-section" id="intel">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Intelligence Briefing</h2>
+                    <p class="section-lead">We track what actually moves the needle on the ground in Dubai. Here are the quick stats we review before every guest arrival.</p>
+                </div>
+                <div class="insights-grid" id="insights-grid"></div>
+
+                <div class="table-wrapper">
+                    <h3>Signature Experiences</h3>
+                    <table class="data-table" id="tours-table">
+                        <thead>
+                            <tr>
+                                <th>Tour</th>
+                                <th>Duration</th>
+                                <th>Best Time</th>
+                                <th>Approx. Price (AED)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filled by script -->
+                        </tbody>
+                    </table>
+
+        <section class="section know-before" id="know-before" aria-labelledby="know-before-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="know-before-title" class="section-title">Know Before You Go</h2>
+                    <p class="section-lead">Respectful highlights and tactile details so every sacred space feels intuitive.</p>
+                </div>
+                <div class="know-grid">
+                    <article class="know-card">
+                        <h3>Sheikh Zayed Grand Mosque</h3>
+                        <p>Marvel at the 82 domes, a 5,700 m² hand-tied carpet, and chandeliers dripping with 40 million crystals.</p>
+                        <ul>
+                            <li>Modesty gowns provided—layer silk slips underneath for comfort.</li>
+                            <li>Marble courtyard can dazzle; polarised sunglasses are essential.</li>
+                        </ul>
+                        <div class="ahmed-tip">Ahmed’s Tip: Whisper-quiet rubber soles keep your stride silent for reflection-friendly photos.</div>
+                    </article>
+                    <article class="know-card">
+                        <h3>Hindu Temple Dubai (Mandir)</h3>
+                        <p>Hand-carved sandstone stories climb skyward, each frieze narrating a different deity in exquisite detail.</p>
+                        <ul>
+                            <li>Arrive during the 6:30 pm aarti to capture golden light on ivory carvings.</li>
+                            <li>Carry a lightweight scarf—heads must be covered within sanctums.</li>
+                        </ul>
+                        <div class="ahmed-tip">Ahmed’s Tip: Shoot from the southeast corner for carvings layered against the creek’s twilight.</div>
+                    </article>
+                    <article class="know-card">
+                        <h3>Desert Conservatory Camps</h3>
+                        <p>Eco-luxury tents with solar-cooled lounges, falconry at dawn, and private astronomers by night.</p>
+                        <ul>
+                            <li>Evenings dip below 18°C from December to February—pack a chic cashmere wrap.</li>
+                            <li>Reserve dune buggies with sand tyres to reach the silent quarter ridges.</li>
+                        </ul>
+                        <div class="ahmed-tip">Ahmed’s Tip: Request the conservationist briefing; it unlocks sunrise access to the protected dunes.</div>
+                    </article>
+ main
+                </div>
+            </div>
+        </section>
+
+ codex/add-data-and-images-to-project-h2royc
+        <section class="section know-before" id="know-before" aria-labelledby="know-before-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="know-before-title" class="section-title">Know Before You Go</h2>
+                    <p class="section-lead">Respectful highlights and tactile details so every sacred space feels intuitive.</p>
+                </div>
+                <div class="know-grid">
+                    {% for item in know_before %}
+                    <article class="know-card">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <ul>
+                            {% for reminder in item.reminders %}
+                            <li>{{ reminder }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="ahmed-tip">{{ item.ahmed_tip }}</div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+ main
+        <section class="section photo-guide" aria-labelledby="photo-guide-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="photo-guide-title" class="section-title">Photography Playbook</h2>
+                    <p class="section-lead">Respectful, stunning shots engineered for your lens and your conscience.</p>
+                </div>
+ codex/add-data-and-images-to-project-h2royc
+                <ol class="photo-timeline">
+                    {% for moment in photography_moments %}
+                    <li class="photo-step">
+                        <time>{{ moment.time }}</time>
+                        <h3>{{ moment.title }}</h3>
+                        <p>{{ moment.description }}</p>
+                        <p><strong>Etiquette:</strong> {{ moment.etiquette }}</p>
+                        <div class="ahmed-tip mini">{{ moment.tip }}</div>
+                    </li>
+                    {% endfor %}
+                </ol>
+
+                <ol class="photo-timeline" id="photography-guide"></ol>
+ main
+            </div>
+        </section>
+
+        <section class="section essentials" aria-labelledby="essentials-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="essentials-title" class="section-title">Essentials Kit</h2>
+                    <p class="section-lead">Pack like a pro. Everything fits in a sleek day tote.</p>
+                </div>
+ codex/add-data-and-images-to-project-h2royc
+                <ul class="essentials-list">
+                    {% for item in essentials %}
+                    <li class="essential-item">
+                        <span aria-hidden="true">{{ item.icon }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.detail }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section gallery">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">See The Adventure</h2>
+                    <p class="section-lead">A peek at the exact moments these hacks unlock.</p>
+                </div>
+                <div class="gallery-grid">
+                    {% for image in gallery_images %}
+                    <figure>
+                        <img src="{{ image.url }}" alt="{{ image.alt }}">
+                        <figcaption>{{ image.caption }}</figcaption>
+                    </figure>
+                    {% endfor %}
+ main
+                </div>
+            </div>
+        </section>
+
+ codex/add-data-and-images-to-project-nmy6ae
         <section class="section know-before" id="know-before" aria-labelledby="know-before-title">
             <div class="container">
                 <div class="section-heading">
@@ -210,13 +484,19 @@
             </div>
         </section>
 
+
+ main
         <section class="section map-journal" id="map">
             <div class="container map-layout">
                 <div class="map-card">
                     <h2 class="section-title">Route Crafted For Comfort</h2>
                     <p>{{ map_content.description }}</p>
                     <div class="map-embed" role="presentation">
+ codex/add-data-and-images-to-project-nmy6ae
                         <iframe title="Dubai &amp; Abu Dhabi curated map" src="{{ map_content.embed_url }}" data-default-embed="{{ map_content.embed_url }}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        <iframe title="Dubai &amp; Abu Dhabi curated map" src="{{ map_content.embed_url }}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+ main
                         <div class="map-fallback" id="map-fallback-message" hidden aria-live="polite" role="status">
                             <p>We couldn't load the live Google Map right now.</p>
                             <p class="map-fallback-note">Use the curated stops below and the offline-friendly directions to keep the route flowing.</p>
@@ -237,7 +517,11 @@
                         {% endfor %}
                     </ul>
                     <div class="map-actions">
+ codex/add-data-and-images-to-project-nmy6ae
                         <a class="button" id="map-directions-link" href="{{ map_content.directions_url }}" data-default-directions="{{ map_content.directions_url }}" target="_blank" rel="noopener">Open in Google Maps &amp; Download Offline</a>
+
+                        <a class="button" href="{{ map_content.directions_url }}" target="_blank" rel="noopener">Open in Google Maps &amp; Download Offline</a>
+ main
                         <p class="map-note">{{ map_content.note }}</p>
                     </div>
                 </div>
@@ -251,9 +535,279 @@
                     </ul>
                     <a class="button secondary" href="journal.html" target="_blank" rel="noopener">Launch the Journal Template</a>
                 </div>
+ codex/add-data-and-images-to-project-nmy6ae
+
+
+                <ul class="essentials-list" id="essentials-list"></ul>
+ main
             </div>
         </section>
+
+        <section class="section gallery">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">See The Adventure</h2>
+                    <p class="section-lead">A peek at the exact moments these hacks unlock.</p>
+                </div>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1498496294664-d9372eb521f3?auto=format&fit=crop&w=900&q=80" alt="Dubai city skyline at sunset">
+                        <figcaption>Golden hour over Downtown Dubai after a late-afternoon city sprint.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1533689481468-64a0363f7294?auto=format&fit=crop&w=900&q=80" alt="Desert safari camp">
+                        <figcaption>Setting up for a desert dinner—booked a month ahead for premium seats.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Traveler packing a backpack">
+                        <figcaption>Everything in one 35L pack, keeping luggage fees at zero.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section map-journal" id="map">
+            <div class="container map-layout">
+                <div class="map-card">
+                    <h2 class="section-title">Route Crafted For Comfort</h2>
+                    <p>Our custom Google Map layers guided visits, third-wave coffee stops, and discreet rest lounges.</p>
+                    <div class="map-embed" role="presentation">
+                        <iframe title="Dubai &amp; Abu Dhabi curated map" src="https://www.google.com/maps/d/embed?mid=1QoSxEo6KQ0i_VreFHhD9n1tFoZT3zhVq&amp;ehbc=2E312F" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <ul class="map-highlights" id="map-highlights"></ul>
+                    <div class="map-actions">
+                        <a class="button" href="https://www.google.com/maps/dir/?api=1&origin=Burj+Khalifa&destination=Qasr+Al+Watan&waypoints=Al+Seef%7CSheikh+Zayed+Grand+Mosque%7CArabica+Coffee+Abu+Dhabi" target="_blank" rel="noopener">Open in Google Maps &amp; Download Offline</a>
+                        <p class="map-note">Ahmed’s Tip: Save the map offline before wheels-up—airline Wi-Fi rarely plays nice with My Maps.</p>
+                    </div>
+                </div>
+                <div class="journal-card" id="journal">
+                    <h2 class="section-title">Digital Travel Journal</h2>
+                    <p>Create a keepsake worthy of framing. Add your images, annotate favourite aromas, and export to print or tablet.</p>
+                    <ul class="journal-features">
+                        <li>Modular daily spreads with sunrise/sunset cues.</li>
+                        <li>Drop zones for instant Polaroid scans.</li>
+                        <li>Reflection prompts for mindful evenings.</li>
+                    </ul>
+                    <a class="button secondary" href="journal.html" target="_blank" rel="noopener">Launch the Journal Template</a>
+                </div>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-copy">
+                <p class="eyebrow">Arabian Peninsula Edition</p>
+                <h1>Dubai &amp; Abu Dhabi, curated like a private members-only travel brief.</h1>
+                <p class="hero-subtitle">Poetic city moments, precise logistics, and the insider rituals our guests return for.</p>
+                <div class="ahmed-tip">Ahmed’s Tip: Book dawn transfers—traffic sleeps, and the first call to prayer becomes your soundtrack to the city.</div>
+ main
+            </div>
+            <aside class="hero-weather" id="weather-card" aria-live="polite">
+                <h2>Real-Time Desert Forecast</h2>
+                <div class="weather-body">
+                    <p class="weather-temp" id="weather-temp">--°C</p>
+                    <dl>
+                        <div>
+                            <dt>Wind</dt>
+                            <dd id="weather-wind">-- km/h</dd>
+                        </div>
+                        <div>
+                            <dt>Light</dt>
+                            <dd id="weather-light">Loading...</dd>
+                        </div>
+                    </dl>
+                </div>
+                <p class="weather-updated" id="weather-updated">Checking satellite data…</p>
+                <p class="weather-footnote">Pack breathable layers plus a scarf—mosques love modest glamour.</p>
+            </aside>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hacks-grid" aria-label="Signature Experiences">
+            <article class="hack-card">
+                <h3>✨ Dawn at the Sheikh Zayed Grand Mosque</h3>
+                <p>Glide across the world’s largest hand-knotted carpet as Swarovski constellations shimmer overhead.</p>
+                <div class="ahmed-tip">Ahmed’s Tip: Slip in 45 minutes before opening to watch sunlight braid through the chandeliers.</div>
+            </article>
+            <article class="hack-card">
+                <h3>🌊 Golden Hour at Al Seef Creek</h3>
+                <p>Breathe in oud-scented breezes while wooden abras crisscross the creek and the spice souk awakens.</p>
+                <div class="ahmed-tip">Ahmed’s Tip: Order cardamom coffee at XVA Café—the courtyard is the quiet lens you need.</div>
+            </article>
+            <article class="hack-card">
+                <h3>🔥 Dunes &amp; Sky at Al Marmoom</h3>
+                <p>Silk-soft sand, private majlis seating, and chefs plating desert truffle risotto under the Milky Way.</p>
+                <div class="ahmed-tip">Ahmed’s Tip: Request the star-charting guide—he maps constellations onto your photos.</div>
+            </article>
+        </section>
     </main>
+
+    <section class="data-section" id="know-before">
+        <div class="container">
+            <h2>Data-Backed Travel Wins</h2>
+            <p class="section-lead">We track what actually moves the needle on the ground in Dubai. Here are the quick stats we look at before every trip.</p>
+            <div class="insights-grid" id="insights-grid"></div>
+
+            <div class="table-wrapper">
+                <h3>Signature Experiences</h3>
+                <table class="data-table" id="tours-table">
+                    <thead>
+                        <tr>
+                            <th>Tour</th>
+                            <th>Duration</th>
+                            <th>Best Time</th>
+                            <th>Approx. Price (AED)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filled by script -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="know-before" aria-labelledby="know-before-title">
+        <div class="container">
+            <h2 id="know-before-title">Know Before You Go</h2>
+            <div class="know-grid">
+                <article class="know-card">
+                    <h3>Sheikh Zayed Grand Mosque</h3>
+                    <p>Marvel at the 82 domes, a 5,700 m² hand-tied carpet, and chandeliers dripping with 40 million crystals.</p>
+                    <ul>
+                        <li>Modesty gowns provided—layer silk slips underneath for comfort.</li>
+                        <li>Marble courtyard can dazzle; sunglasses are essential.</li>
+                    </ul>
+                    <div class="ahmed-tip">Ahmed’s Tip: Whisper-quiet rubber soles keep your stride silent for reflection-friendly photos.</div>
+                </article>
+                <article class="know-card">
+                    <h3>Hindu Temple Dubai (Mandir)</h3>
+                    <p>Hand-carved sandstone stories climb skyward, each frieze narrating a different deity in exquisite detail.</p>
+                    <ul>
+                        <li>Arrive during the 6:30 pm aarti to capture golden light on ivory carvings.</li>
+                        <li>Carry a lightweight scarf—heads must be covered within sanctums.</li>
+                    </ul>
+                    <div class="ahmed-tip">Ahmed’s Tip: Shoot from the southeast corner for carvings layered against the creek’s twilight.</div>
+                </article>
+                <article class="know-card">
+                    <h3>Desert Conservatory Camps</h3>
+                    <p>Eco-luxury tents with solar-cooled lounges, falconry at dawn, and private astronomers by night.</p>
+                    <ul>
+                        <li>Evenings dip below 18°C from December to February—pack a chic cashmere wrap.</li>
+                        <li>Reserve dune buggies with sand tyres to reach the silent quarter ridges.</li>
+                    </ul>
+                    <div class="ahmed-tip">Ahmed’s Tip: Request the conservationist briefing; it unlocks sunrise access to the protected dunes.</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="photo-guide" aria-labelledby="photo-guide-title">
+        <div class="container">
+            <h2 id="photo-guide-title">Photography Playbook</h2>
+            <p class="section-lead">Respectful, stunning shots engineered for your lens and your conscience.</p>
+            <ol class="photo-timeline" id="photography-guide"></ol>
+        </div>
+    </section>
+
+    <section class="essentials" aria-labelledby="essentials-title">
+        <div class="container">
+            <h2 id="essentials-title">Essentials Kit</h2>
+            <p class="section-lead">Pack like a pro. Everything fits in a sleek day tote.</p>
+            <ul class="essentials-list" id="essentials-list"></ul>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>See The Adventure</h2>
+            <p class="section-lead">A peek at the exact moments these hacks unlock.</p>
+            <div class="gallery-grid">
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1498496294664-d9372eb521f3?auto=format&fit=crop&w=900&q=80" alt="Dubai city skyline at sunset">
+                    <figcaption>Golden hour over Downtown Dubai after a late-afternoon city sprint.</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1533689481468-64a0363f7294?auto=format&fit=crop&w=900&q=80" alt="Desert safari camp">
+                    <figcaption>Setting up for a desert dinner—booked a month ahead for premium seats.</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Traveler packing a backpack">
+                    <figcaption>Everything in one 35L pack, keeping luggage fees at zero.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-journal" id="map">
+        <div class="container map-layout">
+            <div class="map-card">
+                <h2>Route Crafted For Comfort</h2>
+                <p>Our custom Google Map layers guided visits, third-wave coffee stops, and discreet rest lounges.</p>
+                <div class="map-embed" role="presentation">
+                    <iframe title="Dubai &amp; Abu Dhabi curated map" src="https://www.google.com/maps/d/embed?mid=1pLDNlAMVnWQ6_fpx3hMCC7UQmB1Hy1Y&amp;ehbc=2E312F" loading="lazy" allowfullscreen></iframe>
+                </div>
+                <ul class="map-highlights" id="map-highlights"></ul>
+                <a class="button" href="https://www.google.com/maps/dir/?api=1&origin=Burj+Khalifa&destination=Qasr+Al+Watan&waypoints=Al+Seef%7CSheikh+Zayed+Grand+Mosque%7CArabica+Coffee+Abu+Dhabi" target="_blank" rel="noopener">Open in Google Maps &amp; Download Offline</a>
+            </div>
+            <div class="journal-card" id="journal">
+                <h2>Digital Travel Journal</h2>
+                <p>Create a keepsake worthy of framing. Add your images, annotate your favourite aromas, and export to print or tablet.</p>
+                <ul class="journal-features">
+                    <li>Modular daily spreads with sunrise/sunset cues.</li>
+                    <li>Drop zones for instant Polaroid scans.</li>
+                    <li>Reflection prompts for mindful evenings.</li>
+                </ul>
+                <a class="button secondary" href="journal.html" target="_blank" rel="noopener">Launch the Journal Template</a>
+ main
+            </div>
+        </div>
+    </section>
+
+    <section class="data-section">
+        <div class="container">
+            <h2>Data-Backed Travel Wins</h2>
+            <p class="section-lead">We track what actually moves the needle on the ground in Dubai. Here are the quick stats we look at before every trip.</p>
+            <div class="insights-grid" id="insights-grid"></div>
+
+            <div class="table-wrapper">
+                <h3>Signature Experiences</h3>
+                <table class="data-table" id="tours-table">
+                    <thead>
+                        <tr>
+                            <th>Tour</th>
+                            <th>Duration</th>
+                            <th>Best Time</th>
+                            <th>Approx. Price (AED)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filled by script -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>See The Adventure</h2>
+            <p class="section-lead">A peek at the exact moments these hacks unlock.</p>
+            <div class="gallery-grid">
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1498496294664-d9372eb521f3?auto=format&fit=crop&w=900&q=80" alt="Dubai city skyline at sunset">
+                    <figcaption>Golden hour over Downtown Dubai after a late-afternoon city sprint.</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1533689481468-64a0363f7294?auto=format&fit=crop&w=900&q=80" alt="Desert safari camp">
+                    <figcaption>Setting up for a desert dinner—booked a month ahead for premium seats.</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Traveler packing a backpack">
+                    <figcaption>Everything in one 35L pack, keeping luggage fees at zero.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -261,6 +815,13 @@
         </div>
     </footer>
 
+ codex/add-data-and-images-to-project-nmy6ae
+
+ codex/add-data-and-images-to-project-h2royc
+
+ codex/add-data-and-images-to-project-vu2r5u
+ main
+ main
     <div class="chat-widget" id="chat-widget">
         <button class="chat-toggle" id="chat-toggle">Chat with our AI</button>
         <div class="chat-window hidden" id="chat-window">
@@ -280,5 +841,32 @@
     </div>
 
     <script src="static/js/main.js" type="module"></script>
+ codex/add-data-and-images-to-project-nmy6ae
+
+ codex/add-data-and-images-to-project-h2royc
+
+
+<div class="chat-widget" id="chat-widget">
+    <button class="chat-toggle" id="chat-toggle">Chat with our AI</button>
+    <div class="chat-window hidden" id="chat-window">
+        <div class="chat-header">
+            <h3>Dubai Travel GPT</h3>
+            <button class="chat-close" id="chat-close" aria-label="Close chat">&times;</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot">Ask me anything about squeezing the most out of a Dubai trip.</div>
+        </div>
+        <form class="chat-form" id="chat-form">
+            <label class="sr-only" for="chat-input">Ask a question</label>
+            <input type="text" id="chat-input" name="question" placeholder="Ask about budgets, packing, flights..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+
+<script src="static/js/main.js" type="module"></script>
+ main
+ main
+ main
 </body>
 </html>
