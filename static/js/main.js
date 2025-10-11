@@ -1,4 +1,5 @@
-const PLACEHOLDER_PATTERN = /{{|}}/;
+const CONFLICT_MARKER_PATTERN = /<<<<<<<|=======|>>>>>>>/;
+const PLACEHOLDER_PATTERN = /{{|}}|<<<<<<<|=======|>>>>>>>/;
 
 const FALLBACK_CONTENT = (() => {
     if (window.__NBSTHFallbackContent) {
@@ -282,6 +283,34 @@ function buildFallbackWeather(cityKey) {
 
     let isStaticMode = window.location.protocol === 'file:' || window.location.origin === 'null';
     let skipApiCalls = Boolean(isStaticMode);
+
+    function purgeConflictMarkers(root = document.body) {
+        if (!root) return;
+        if (typeof document.createTreeWalker !== 'function' || typeof NodeFilter === 'undefined') {
+            return;
+        }
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        const nodesToClean = [];
+
+        while (walker.nextNode()) {
+            const node = walker.currentNode;
+            if (CONFLICT_MARKER_PATTERN.test(node.nodeValue || '')) {
+                nodesToClean.push(node);
+            }
+        }
+
+        nodesToClean.forEach((node) => {
+            const parent = node.parentNode;
+            if (!parent) return;
+
+            const cleanedValue = (node.nodeValue || '').replace(CONFLICT_MARKER_PATTERN, '').trim();
+            if (cleanedValue) {
+                node.nodeValue = cleanedValue;
+            } else {
+                parent.removeChild(node);
+            }
+        });
+    }
     const state = (window.__nbsthState = window.__nbsthState || {
         activeWeatherCity: 'dubai',
         weatherCache: {},
@@ -352,6 +381,8 @@ function buildFallbackWeather(cityKey) {
         }
         return true;
     }
+
+    purgeConflictMarkers();
 
     if (!isStaticMode) {
         const placeholderAnchors = [
