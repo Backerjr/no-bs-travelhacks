@@ -1,9 +1,18 @@
+ codex/add-data-and-images-to-project-vu2r5u
+
+ codex/add-data-and-images-to-project-kepdua
+ main
 import json
 from datetime import datetime
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+ codex/add-data-and-images-to-project-vu2r5u
+
+
+ main
+ main
 from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__, static_folder='../static', template_folder='../')
@@ -12,6 +21,10 @@ app = Flask(__name__, static_folder='../static', template_folder='../')
 tours = [
     {
         "id": 1,
+ codex/add-data-and-images-to-project-vu2r5u
+
+ codex/add-data-and-images-to-project-kepdua
+ main
         "name": "Sheikh Zayed Grand Mosque Dawn Access",
         "description": "Private imam-led tour with Swarovski chandelier briefing and photography concierge.",
         "duration": "3 hours",
@@ -33,11 +46,41 @@ tours = [
         "duration": "7 hours",
         "price": 520,
         "best_time": "Oct–Apr · 17:00",
+ codex/add-data-and-images-to-project-vu2r5u
+
+
+        "name": "Dubai City Tour",
+        "description": "A half-day sprint through Old Dubai, souks and the Burj Khalifa.",
+        "duration": "6 hours",
+        "price": 120,
+        "best_time": "November - March",
+    },
+    {
+        "id": 2,
+        "name": "Desert Safari",
+        "description": "Dune bashing, camel rides and a barbecue dinner under the stars.",
+        "duration": "8 hours",
+        "price": 150,
+        "best_time": "October - April",
+    },
+    {
+        "id": 3,
+        "name": "Abu Dhabi City Tour",
+        "description": "Sheikh Zayed Mosque, Louvre Abu Dhabi and the Corniche in a single day.",
+        "duration": "10 hours",
+        "price": 180,
+        "best_time": "November - March",
+ main
+ main
     },
 ]
 
 tour_insights = [
     {
+ codex/add-data-and-images-to-project-vu2r5u
+
+ codex/add-data-and-images-to-project-kepdua
+ main
         "title": "Luxury For Less",
         "stat": "18%",
         "description": "Couples who prebook signature mosque and desert tours together typically save 18% on chauffeured transfers.",
@@ -51,6 +94,24 @@ tour_insights = [
         "title": "Hydration Rule",
         "stat": "500ml/hr",
         "description": "Plan for half a litre of water per hour outdoors; our refill strategy keeps you cool without overpacking.",
+ codex/add-data-and-images-to-project-vu2r5u
+
+
+        "title": "Average Savings",
+        "stat": "22%",
+        "description": "Travellers who bundle city and desert experiences save on average 22% on transport costs.",
+    },
+    {
+        "title": "Packing Wins",
+        "stat": "7kg",
+        "description": "Our one-bag packing template keeps luggage under 7kg—no checked bag fees, ever.",
+    },
+    {
+        "title": "Peak Booking Window",
+        "stat": "37 days",
+        "description": "Booking flights five weeks out consistently beats last-minute fares for Gulf routes.",
+ main
+ main
     },
 ]
 
@@ -91,6 +152,10 @@ def ask_question():
     elif "budget" in question or "cheap" in question:
         answer = (
             "Skip the taxis—use the Dubai Metro from DXB into the city and grab a Nol card. "
+ codex/add-data-and-images-to-project-vu2r5u
+
+ codex/add-data-and-images-to-project-kepdua
+ main
             "Bundle mosque, Mandir, and desert transfers with one chauffeur to trim 18% instantly."
         )
     elif "desert" in question:
@@ -119,6 +184,7 @@ def ask_question():
 
 @app.route('/api/weather')
 def get_weather():
+ codex/add-data-and-images-to-project-vu2r5u
     """Fetch a live weather snapshot for supported Gulf cities using the Open-Meteo API."""
 
     city_key = (request.args.get('city') or 'dubai').lower()
@@ -130,6 +196,13 @@ def get_weather():
     params = {
         "latitude": city["latitude"],
         "longitude": city["longitude"],
+
+    """Fetch a live weather snapshot for Dubai using the Open-Meteo API."""
+
+    params = {
+        "latitude": 25.2048,
+        "longitude": 55.2708,
+ main
         "current_weather": True,
         "hourly": ["temperature_2m", "relativehumidity_2m", "windspeed_10m"],
         "timezone": "Asia/Dubai",
@@ -159,6 +232,7 @@ def get_weather():
         except ValueError:
             updated_at = updated_iso
 
+ codex/add-data-and-images-to-project-vu2r5u
     humidity = None
     hourly = data.get("hourly", {})
     hourly_times = hourly.get("time", [])
@@ -168,6 +242,8 @@ def get_weather():
         if idx < len(humidity_values):
             humidity = humidity_values[idx]
 
+
+ main
     payload = {
         "temperature": current.get("temperature"),
         "windspeed": current.get("windspeed"),
@@ -175,12 +251,39 @@ def get_weather():
         "weathercode": current.get("weathercode"),
         "is_day": current.get("is_day"),
         "updated_at": updated_at,
+ codex/add-data-and-images-to-project-vu2r5u
         "humidity": humidity,
         "city": city["label"],
         "city_key": city_key,
     }
 
     return jsonify(payload)
+
+    }
+
+    return jsonify(payload)
+
+            "Pair it with a combo tour ticket and you usually shave 20% off the total spend."
+        )
+    elif "desert" in question:
+        answer = (
+            "Head out for a sunset safari in winter. Book 30+ days ahead and you can lock "
+            "in premium camps for the same price as basic ones."
+        )
+    elif "packing" in question or "luggage" in question:
+        answer = (
+            "Use a 35L backpack, pack cubes and quick-dry layers. Keep it under 7kg and you "
+            "avoid checked bag fees on most regional carriers."
+        )
+    else:
+        answer = (
+            "I'm your on-call travel hacker. Ask about budgets, desert safaris, packing, or "
+            "flights and I'll drop a practical tip."
+        )
+
+    return jsonify({"answer": answer})
+ main
+ main
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
