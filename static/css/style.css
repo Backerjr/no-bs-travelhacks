@@ -230,8 +230,13 @@ main.container {
 /* Data & Insights */
 .data-section {
     background: #fff;
+ codex/add-data-and-images-to-project-kepdua
     margin: 60px 0 0;
     padding: 80px 0 60px;
+
+    margin: 40px 0;
+    padding: 60px 0;
+ main
 }
 
 .section-lead {
@@ -250,17 +255,29 @@ main.container {
 }
 
 .insight-card {
+ codex/add-data-and-images-to-project-kepdua
     background: linear-gradient(135deg, #f9f0ff 0%, #ffffff 100%);
     border-radius: 18px;
     padding: 24px;
     box-shadow: 0 24px 40px rgba(74, 35, 90, 0.08);
     border: 1px solid rgba(114, 54, 132, 0.15);
+
+    background: linear-gradient(135deg, #f0f5ff 0%, #ffffff 100%);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.08);
+    border: 1px solid rgba(0, 86, 179, 0.1);
+ main
 }
 
 .insight-card h3 {
     margin: 10px 0 5px;
     font-family: 'Inter', sans-serif;
+ codex/add-data-and-images-to-project-kepdua
     color: #391c59;
+
+    color: #003f88;
+ main
 }
 
 .insight-card p {
@@ -272,15 +289,26 @@ main.container {
     display: inline-block;
     font-size: 2rem;
     font-weight: 700;
+ codex/add-data-and-images-to-project-kepdua
     color: #7c3aed;
+
+    color: #0056b3;
+ main
 }
 
 .table-wrapper {
     overflow-x: auto;
+ codex/add-data-and-images-to-project-kepdua
     background: #f9f7ff;
     border-radius: 18px;
     padding: 24px;
     box-shadow: 0 22px 35px rgba(15, 28, 63, 0.07);
+
+    background: #f8f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+ main
 }
 
 .table-wrapper h3 {
@@ -317,6 +345,7 @@ main.container {
     margin-top: 4px;
 }
 
+ codex/add-data-and-images-to-project-kepdua
 section h2 {
     font-family: 'Inter', sans-serif;
     font-size: clamp(2rem, 3vw, 2.6rem);
@@ -557,6 +586,12 @@ section h2 {
 .gallery {
     padding: 80px 0;
     background: linear-gradient(180deg, #faf7f4 0%, #ffffff 100%);
+
+/* Gallery */
+.gallery {
+    padding: 60px 0;
+    background: linear-gradient(180deg, #f4f4f9 0%, #ffffff 100%);
+ main
 }
 
 .gallery-grid {
@@ -731,6 +766,7 @@ section h2 {
     border: 0;
 }
 
+ codex/add-data-and-images-to-project-kepdua
 @media (max-width: 1024px) {
     .hero-content {
         flex-direction: column;
@@ -742,11 +778,14 @@ section h2 {
     }
 }
 
+
+ main
 @media (max-width: 768px) {
     .navbar .nav-links {
         display: none;
     }
 
+ codex/add-data-and-images-to-project-kepdua
     .hero {
         padding: 100px 0 60px;
     }
@@ -775,6 +814,16 @@ section h2 {
         min-height: 220px;
     }
 
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+ main
     .chat-widget {
         right: 16px;
         left: 16px;
