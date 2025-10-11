@@ -4,7 +4,7 @@ index 0000000000000000000000000000000000000000..113218ada94c67bac604b04d2efee88b
 --- /dev/null
 +++ b/static/js/fallback-content.js
 @@ -0,0 +1,217 @@
-+export const PLACEHOLDER_PATTERN = /{{|}}/;
++export const PLACEHOLDER_PATTERN = /{{[^}]*}}/g;
 +
 +export const FALLBACK_CONTENT = {
 +    signatureTagline: 'Luxury Travel | Storytelling | AI-Optimized Experiences™',
