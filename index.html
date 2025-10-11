@@ -7,42 +7,250 @@
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav class="navbar">
+    <div class="signature-banner">
         <div class="container">
+            <span>{{ signature_tagline }}</span>
+        </div>
+    </div>
+
+    <nav class="navbar" aria-label="Primary">
+        <div class="container nav-inner">
             <a href="#" class="logo">No-BS Travel Hacks</a>
             <ul class="nav-links">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#intel">Intel</a></li>
+                <li><a href="#know-before">Know Before</a></li>
+                <li><a href="#map">Map &amp; Logistics</a></li>
+                <li><a href="#journal">Travel Journal</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero" data-default-hero="{{ hero.image_url }}" style="--hero-image: url({{ hero.image_url | tojson }});">
         <div class="container">
-            <h1>Uncomplicate Your Travel.</h1>
-            <p>Just hacks that actually work.</p>
+            <div class="hero-inner">
+                <div class="hero-intro">
+                    <p class="eyebrow">{{ hero.eyebrow }}</p>
+                    <h1 class="hero-title">{{ hero.title }}</h1>
+                    <p class="hero-subtitle">{{ hero.subtitle }}</p>
+                    <ul class="hero-highlights">
+                        {% for highlight in hero.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="ahmed-tip hero-tip">{{ hero.tip }}</div>
+                    <form class="hero-image-form" id="hero-image-form">
+                        <label for="hero-image-url">Swap the header photo with your own URL</label>
+                        <div class="hero-image-input">
+                            <input type="url" id="hero-image-url" name="hero_image_url" placeholder="Paste a high-res image link (1600px recommended)">
+                            <button type="submit">Apply</button>
+                            <button type="button" class="link-button" id="hero-image-reset">Reset</button>
+                        </div>
+                        <p class="hero-image-hint">Ahmed’s Tip: Choose dawn light or your own portfolio to make the brief unmistakably yours.</p>
+                    </form>
+                </div>
+                <aside class="hero-forecast" id="weather-card" aria-live="polite" data-state="idle">
+                    <div class="forecast-header">
+                        <h2>Real-Time Desert Forecast</h2>
+                        <div class="forecast-tabs" role="tablist">
+                            <button class="forecast-tab is-active" type="button" role="tab" aria-selected="true" data-forecast-city="dubai">Dubai</button>
+                            <button class="forecast-tab" type="button" role="tab" aria-selected="false" data-forecast-city="abu-dhabi">Abu Dhabi</button>
+                        </div>
+                    </div>
+                    <p class="weather-city" id="weather-city">Dubai</p>
+                    <div class="weather-body">
+                        <p class="weather-temp" id="weather-temp">--°C</p>
+                        <dl class="weather-meta">
+                            <div>
+                                <dt>Wind</dt>
+                                <dd id="weather-wind">-- km/h</dd>
+                            </div>
+                            <div>
+                                <dt>Humidity</dt>
+                                <dd id="weather-humidity">--%</dd>
+                            </div>
+                            <div>
+                                <dt>Light</dt>
+                                <dd id="weather-light">Loading...</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <p class="weather-updated" id="weather-updated">Checking satellite data…</p>
+                    <p class="weather-footnote">Pack breathable layers plus a silk scarf—mosques adore modest glamour while lounges freeze the AC. <span class="weather-source" id="weather-source"></span></p>
+                </aside>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <h2>Featured Hacks</h2>
-        <section class="hacks-grid">
-            <div class="hack-card">
-                <h3>✈️ Pack Smarter, Not Harder</h3>
-                <p>The definitive guide to one-bag travel. Stop paying for checked luggage and enjoy the freedom of traveling light.</p>
+    <main>
+        <section class="section experiences" aria-label="Signature Experiences">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Signature Moments To Reserve First</h2>
+                    <p class="section-lead">Curated experiences engineered for the most luminous photographs and seamless handoffs.</p>
+                </div>
+                <div class="hacks-grid">
+                    {% for experience in experience_highlights %}
+                    <article class="hack-card">
+                        <h3>{{ experience.title }}</h3>
+                        <p>{{ experience.detail }}</p>
+                        {% if experience.ahmed_tip %}
+                        <div class="ahmed-tip">{{ experience.ahmed_tip }}</div>
+                        {% endif %}
+                    </article>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="hack-card">
-                <h3>💸 Find Flights Without the Gimmicks</h3>
-                <p>Learn the simple, repeatable process for finding the cheapest flights without spending hours searching.</p>
+        </section>
+
+        <section class="section data-section" id="intel">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Intelligence Briefing</h2>
+                    <p class="section-lead">We track what actually moves the needle on the ground in Dubai. Here are the quick stats we review before every guest arrival.</p>
+                </div>
+                <div class="insights-grid" id="insights-grid"></div>
+
+                <div class="table-wrapper">
+                    <h3>Signature Experiences</h3>
+                    <table class="data-table" id="tours-table">
+                        <thead>
+                            <tr>
+                                <th>Tour</th>
+                                <th>Duration</th>
+                                <th>Best Time</th>
+                                <th>Approx. Price (AED)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filled by script -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="hack-card">
-                <h3>🌍 Live Like a Local</h3>
-                <p>Simple techniques to find authentic food, avoid tourist traps, and experience the real culture of your destination.</p>
+        </section>
+
+        <section class="section know-before" id="know-before" aria-labelledby="know-before-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="know-before-title" class="section-title">Know Before You Go</h2>
+                    <p class="section-lead">Respectful highlights and tactile details so every sacred space feels intuitive.</p>
+                </div>
+                <div class="know-grid">
+                    {% for item in know_before %}
+                    <article class="know-card">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <ul>
+                            {% for reminder in item.reminders %}
+                            <li>{{ reminder }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="ahmed-tip">{{ item.ahmed_tip }}</div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section photo-guide" aria-labelledby="photo-guide-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="photo-guide-title" class="section-title">Photography Playbook</h2>
+                    <p class="section-lead">Respectful, stunning shots engineered for your lens and your conscience.</p>
+                </div>
+                <ol class="photo-timeline">
+                    {% for moment in photography_moments %}
+                    <li class="photo-step">
+                        <time>{{ moment.time }}</time>
+                        <h3>{{ moment.title }}</h3>
+                        <p>{{ moment.description }}</p>
+                        <p><strong>Etiquette:</strong> {{ moment.etiquette }}</p>
+                        <div class="ahmed-tip mini">{{ moment.tip }}</div>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </section>
+
+        <section class="section essentials" aria-labelledby="essentials-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="essentials-title" class="section-title">Essentials Kit</h2>
+                    <p class="section-lead">Pack like a pro. Everything fits in a sleek day tote.</p>
+                </div>
+                <ul class="essentials-list">
+                    {% for item in essentials %}
+                    <li class="essential-item">
+                        <span aria-hidden="true">{{ item.icon }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.detail }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section gallery">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">See The Adventure</h2>
+                    <p class="section-lead">A peek at the exact moments these hacks unlock.</p>
+                </div>
+                <div class="gallery-grid">
+                    {% for image in gallery_images %}
+                    <figure>
+                        <img src="{{ image.url }}" alt="{{ image.alt }}">
+                        <figcaption>{{ image.caption }}</figcaption>
+                    </figure>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section map-journal" id="map">
+            <div class="container map-layout">
+                <div class="map-card">
+                    <h2 class="section-title">Route Crafted For Comfort</h2>
+                    <p>{{ map_content.description }}</p>
+                    <div class="map-embed" role="presentation">
+                        <iframe title="Dubai &amp; Abu Dhabi curated map" src="{{ map_content.embed_url }}" data-default-embed="{{ map_content.embed_url }}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="map-fallback" id="map-fallback-message" hidden aria-live="polite" role="status">
+                            <p>We couldn't load the live Google Map right now.</p>
+                            <p class="map-fallback-note">Use the curated stops below and the offline-friendly directions to keep the route flowing.</p>
+                        </div>
+                    </div>
+                    <ul class="map-highlights" id="map-highlights">
+                        {% for highlight in map_content.highlights %}
+                        <li>
+                            <span aria-hidden="true">•</span>
+                            <div>
+                                <strong>{{ highlight.title }}</strong>
+                                <p>{{ highlight.detail }}</p>
+                                {% if highlight.ahmed_tip %}
+                                <p class="map-highlight-tip">{{ highlight.ahmed_tip }}</p>
+                                {% endif %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="map-actions">
+                        <a class="button" id="map-directions-link" href="{{ map_content.directions_url }}" data-default-directions="{{ map_content.directions_url }}" target="_blank" rel="noopener">Open in Google Maps &amp; Download Offline</a>
+                        <p class="map-note">{{ map_content.note }}</p>
+                    </div>
+                </div>
+                <div class="journal-card" id="journal">
+                    <h2 class="section-title">Digital Travel Journal</h2>
+                    <p>Create a keepsake worthy of framing. Add your images, annotate favourite aromas, and export to print or tablet.</p>
+                    <ul class="journal-features">
+                        {% for feature in journal_features %}
+                        <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a class="button secondary" href="{{ url_for('journal') }}" target="_blank" rel="noopener">Launch the Journal Template</a>
+                </div>
             </div>
         </section>
     </main>
@@ -53,12 +261,24 @@
         </div>
     </footer>
 
-<script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-    Chatbot.init({
-        chatflowid: "YOUR-CHATFLOW-ID", // Make sure this is your correct ID from Flowise
-        apiHost: "https://flowise.onrender.com", // <-- The correct, live URL
-    });
-</script>
+    <div class="chat-widget" id="chat-widget">
+        <button class="chat-toggle" id="chat-toggle">Chat with our AI</button>
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <h3>Dubai Travel GPT</h3>
+                <button class="chat-close" id="chat-close" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="chat-message bot">Ask me anything about squeezing the most out of a Dubai trip.</div>
+            </div>
+            <form class="chat-form" id="chat-form">
+                <label class="sr-only" for="chat-input">Ask a question</label>
+                <input type="text" id="chat-input" name="question" placeholder="Ask about budgets, packing, flights..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="static/js/main.js" defer></script>
 </body>
 </html>
